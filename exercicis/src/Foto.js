@@ -1,3 +1,12 @@
-export default function Foto({ source, indice, func }) {
-  return <img src={source} alt={source} key={indice} onClick={func(source)} />;
+export default function Foto({ clase, source, indice, func }) {
+  let sour = source;
+  console.log(clase);
+  return (
+    <img
+      className={clase}
+      src={source}
+      alt={source}
+      onClick={() => func(indice)}
+    />
+  );
 }
