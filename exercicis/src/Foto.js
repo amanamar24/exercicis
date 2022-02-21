@@ -1,5 +1,4 @@
 export default function Foto({ clase, source, indice, func }) {
-  let sour = source;
   console.log(clase);
   return (
     <img

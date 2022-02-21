@@ -2,6 +2,7 @@
   text-align: center;
 }
 img {
+  display: inline;
   width: 150px;
   height: 150px;
 }
@@ -9,7 +10,20 @@ img {
   width: 300px;
   height: 300px;
 }
-/* img:nth-child(3) {
-  width: 300px;
-  height: 300px;
-} */
+.board-row {
+  width: 350px;
+  height: 90px;
+}
+button {
+  width: 80px;
+  height: 80px;
+}
+.morpion-container {
+  width: 240px;
+  height: 220px;
+  margin-left: 500px;
+  margin-top:20px;
+}
+.proceso-juego{
+  margin-left: 566px;
+}

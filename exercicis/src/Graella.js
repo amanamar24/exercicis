@@ -10,9 +10,6 @@ export default function Graella() {
     "images/5.jpg",
     "images/6.jpg",
     "images/7.jpg",
-    "images/8.jpg",
-    "images/9.jpg",
-    "images/10.jpg",
   ];
   const [clickeado, setClickeado] = useState("");
   function clickear(indice) {
