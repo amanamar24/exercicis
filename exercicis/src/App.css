@@ -22,8 +22,130 @@ button {
   width: 240px;
   height: 220px;
   margin-left: 500px;
-  margin-top:20px;
+  margin-top: 20px;
 }
-.proceso-juego{
+.proceso-juego {
   margin-left: 566px;
+}
+/* codigo en clase  */
+/* .HolyGrail-body {
+  display: flex;
+  flex: 1;
+}
+.HolyGrail-content {
+  flex: 1;
+}
+.HolyGrail-nav,
+.HolyGrail-ads {
+  flex: 0 0 12em;
+}
+.HolyGrail-nav {
+  order: -1;
+}
+#root,
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+header,
+footer {
+  background-color: aquamarine;
+  line-height: 5rem;
+  padding: 0 1rem;
+}
+main,
+nav,
+aside {
+  padding: 1 rem;
+}
+footer {
+  line-height: 5rem;
+} */
+/* codigo en clase */
+/* codigo web */
+/* .HolyGrail {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.HolyGrail-body {
+  display: flex;
+  flex: 1;
+}
+.HolyGrail-content {
+  flex: 1;
+}
+
+.HolyGrail-nav,
+.HolyGrail-ads {
+  
+  flex: 0 0 12em;
+}
+
+.HolyGrail-nav {
+  
+  order: -1;
+}
+.HolyGrail,
+.HolyGrail-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.HolyGrail-nav {
+  order: -1;
+}
+
+@media (min-width: 768px) {
+  .HolyGrail-body {
+    flex-direction: row;
+    flex: 1;
+  }
+  .HolyGrail-content {
+    flex: 1;
+  }
+  .HolyGrail-nav,
+  .HolyGrail-ads {
+    
+    flex: 0 0 12em;
+  }
+} */
+/* codigo web */
+.body,
+#root {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.HolyGrail-body {
+  display: flex;
+  flex: 1;
+}
+.HolyGrail-content {
+  flex: 1;
+}
+
+.HolyGrail-nav,
+.HolyGrail-ads {
+  /* 12em is the width of the columns */
+  flex: 0 0 12em;
+}
+
+.HolyGrail-nav {
+  /* put the nav on the left */
+  order: -1;
+}
+header,
+footer {
+  background-color: rgb(133, 150, 150);
+  line-height: 5rem;
+  padding: 0 1rem;
+}
+main,
+nav,
+aside {
+  padding: 1rem;
 }

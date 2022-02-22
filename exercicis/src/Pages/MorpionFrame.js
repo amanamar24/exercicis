@@ -90,7 +90,7 @@ export default function MorpionFrame() {
     signo === "O" ? setSigno("X") : setSigno("O");
     // alert(indice);
   }
-  function forward() {}
+
   function backward() {
     //     (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
     // 0: {pos: 0, signo: 'X', cuenta: 0}
@@ -115,13 +115,17 @@ export default function MorpionFrame() {
     setContador(contador - 1); // porque en la celda 0 vale 1,y el ultimo click lo incrementa a 1 para usar posteriorment pero con el juego terminado no se usa
     console.log("contador despues", contador);
     let backAux = [];
+    //22/02/2022
+    setWinner([]);
+    //22/02/2022
     if (contaux > -1) {
       for (let j = 0; j < historico.length; j++) {
         if (historico[j].cuenta === contaux) {
           //actualizar backawarHis
           // { pos: 0, signo: "", cuenta: null },
 
-          backAux = historico[j];
+          // backAux = historico[j];
+          setBackwarHis(historico[j]);
           // backwardHis = historico[j];
           console.log("historico[j]", historico[j]);
           historico[j].cuenta = null;
@@ -131,7 +135,7 @@ export default function MorpionFrame() {
         }
       }
       setHistorico([...historico]);
-      setBackwarHis([...backAux]);
+      // setBackwarHis([...backAux]);
 
       console.log("backwardHis", backwardHis);
       console.log("historico", historico);
@@ -144,6 +148,7 @@ export default function MorpionFrame() {
     //
     // alert("back");
   }
+  function forward() {}
 
   return (
     <>
@@ -153,6 +158,9 @@ export default function MorpionFrame() {
             ? "game over . the winner is: X"
             : "game over . the winner is: O"
           : signo + " it's your turn"}
+        {/* {contador === 9 || winner.length !== 0
+          ? "game over . the winner is: " + signo
+          : signo + " it's your turn"} */}
       </h2>
       <div className="grid grid-cols-3 gap-2 morpion-container grid place-items-center h-screen">
         {[...Array(9)].map((x, i) => (
