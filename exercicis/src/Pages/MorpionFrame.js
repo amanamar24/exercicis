@@ -8,6 +8,7 @@ export default function MorpionFrame() {
   const [winner, setWinner] = useState([]);
   // const [ganador, setGanador] = useState(null);
   let initialState = [
+    // añadir show : true, false
     { pos: 0, signo: "", cuenta: null },
     { pos: 1, signo: "", cuenta: null },
     { pos: 2, signo: "", cuenta: null },
@@ -92,22 +93,6 @@ export default function MorpionFrame() {
   }
 
   function backward() {
-    //     (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-    // 0: {pos: 0, signo: 'X', cuenta: 0}
-    // 1: {pos: 1, signo: 'O', cuenta: 1}
-    // 2: {pos: 2, signo: '', cuenta: null}
-    // 3: {pos: 3, signo: 'X', cuenta: 2}
-    // 4: {pos: 4, signo: 'O', cuenta: 3}
-    // 5: {pos: 5, signo: '', cuenta: null}
-    // 6: {pos: 6, signo: 'X', cuenta: 4}
-    // 7: {pos: 7, signo: '', cuenta: null}
-    // 8: {pos: 8, signo: '', cuenta: null}
-    // let aux = historico.pop();
-    // console.log("aux", aux);
-    // backwardHis.push(aux);
-    // setBackwarHis([...backwardHis]);
-    // console.log("backward", backwardHis);
-
     // con el contador recoger el indice
     let contaux = contador - 1;
     console.log("contaux", contaux);
@@ -115,6 +100,7 @@ export default function MorpionFrame() {
     setContador(contador - 1); // porque en la celda 0 vale 1,y el ultimo click lo incrementa a 1 para usar posteriorment pero con el juego terminado no se usa
     console.log("contador despues", contador);
     let backAux = [];
+    let histAux = []; // cambiar a constante
     //22/02/2022
     setWinner([]);
     //22/02/2022
@@ -125,16 +111,33 @@ export default function MorpionFrame() {
           // { pos: 0, signo: "", cuenta: null },
 
           // backAux = historico[j];
-          setBackwarHis(historico[j]);
+
+          // setBackwarHis([...backwardHis]);
+
+          // setBackwarHis(historico[j]);
           // backwardHis = historico[j];
           console.log("historico[j]", historico[j]);
-          historico[j].cuenta = null;
-          historico[j].signo = "";
+          // histAux.push(historico);
+          // backAux.push(backwardHis);
+          histAux = historico;
+          backAux = backwardHis;
+          // backAux.push(historico[j]);
+          // llamar este trozo de codigo en una func
+          // para hacer un delay
+          backAux.push(histAux[j]);
+          console.log("back", backAux);
+          setBackwarHis([...backAux]);
+          histAux[j].cuenta = null;
+          histAux[j].signo = "";
+          // histAux[j].pos = "";
+          // historico[j].cuenta = null;
+          // historico[j].signo = "";
           // j = historico.length;
           break;
         }
       }
-      setHistorico([...historico]);
+      // setHistorico([...histAux]);
+      // setHistorico([...historico]);
       // setBackwarHis([...backAux]);
 
       console.log("backwardHis", backwardHis);
@@ -147,8 +150,22 @@ export default function MorpionFrame() {
     // console.log("historico", historico);
     //
     // alert("back");
+    alert("as");
   }
-  function forward() {}
+  function forward() {
+    alert("as");
+    // backwardHis.pop();
+    let auxH = backwardHis[backwardHis.length - 1];
+    console.log("bakwardHis.length", backwardHis);
+    console.log("auxH", auxH);
+    historico[auxH.pos].cuenta = auxH.cuenta;
+    historico[auxH.pos].signo = auxH.signo;
+    setHistorico([...historico]);
+    setBackwarHis([...auxH]);
+    // setBackwarHis([...backwardHis]);
+    setContador(contador + 1);
+    console.log("historico,afterward", historico);
+  }
 
   return (
     <>
