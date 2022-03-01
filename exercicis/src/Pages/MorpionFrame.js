@@ -9,15 +9,15 @@ export default function MorpionFrame() {
   // const [ganador, setGanador] = useState(null);
   let initialState = [
     // añadir show : true, false
-    { pos: 0, signo: "", cuenta: null },
-    { pos: 1, signo: "", cuenta: null },
-    { pos: 2, signo: "", cuenta: null },
-    { pos: 3, signo: "", cuenta: null },
-    { pos: 4, signo: "", cuenta: null },
-    { pos: 5, signo: "", cuenta: null },
-    { pos: 6, signo: "", cuenta: null },
-    { pos: 7, signo: "", cuenta: null },
-    { pos: 8, signo: "", cuenta: null },
+    { pos: 0, signo: "", cuenta: null, back: false },
+    { pos: 1, signo: "", cuenta: null, back: false },
+    { pos: 2, signo: "", cuenta: null, back: false },
+    { pos: 3, signo: "", cuenta: null, back: false },
+    { pos: 4, signo: "", cuenta: null, back: false },
+    { pos: 5, signo: "", cuenta: null, back: false },
+    { pos: 6, signo: "", cuenta: null, back: false },
+    { pos: 7, signo: "", cuenta: null, back: false },
+    { pos: 8, signo: "", cuenta: null, back: false },
   ];
   const [historico, setHistorico] = useState(initialState);
   const [backwardHis, setBackwarHis] = useState([]);
@@ -102,33 +102,44 @@ export default function MorpionFrame() {
     let backAux = [];
     let histAux = []; // cambiar a constante
     //22/02/2022
-    setWinner([]);
+    // setWinner([]);
     //22/02/2022
     if (contaux > -1) {
       for (let j = 0; j < historico.length; j++) {
         if (historico[j].cuenta === contaux) {
-          //actualizar backawarHis
-          // { pos: 0, signo: "", cuenta: null },
+          ///------------ codigo con un state-------
+          //alert("hey");
+          console.log("historico[j].pos", historico[j].pos);
+          histAux = [...historico];
+          histAux[j] = { ...histAux[j] }; //de david , fuciona sin este codigo
+          histAux[j].back = true;
+          console.log(histAux[j].back);
+          // historico[j].back = trxue;
+          setHistorico(histAux);
+          // console.log("historico con back", historico);
+          // ///------------ codigo con un state-------
+          // //actualizar backawarHis
+          // // { pos: 0, signo: "", cuenta: null },
 
-          // backAux = historico[j];
+          // // backAux = historico[j];
 
-          // setBackwarHis([...backwardHis]);
+          // // setBackwarHis([...backwardHis]);
 
-          // setBackwarHis(historico[j]);
-          // backwardHis = historico[j];
-          console.log("historico[j]", historico[j]);
-          // histAux.push(historico);
-          // backAux.push(backwardHis);
-          histAux = historico;
-          backAux = backwardHis;
-          // backAux.push(historico[j]);
-          // llamar este trozo de codigo en una func
-          // para hacer un delay
-          backAux.push(histAux[j]);
-          console.log("back", backAux);
-          setBackwarHis([...backAux]);
-          histAux[j].cuenta = null;
-          histAux[j].signo = "";
+          // // setBackwarHis(historico[j]);
+          // // backwardHis = historico[j];
+          // console.log("historico[j]", historico[j]);
+          // // histAux.push(historico);
+          // // backAux.push(backwardHis);
+          // histAux = historico;
+          // backAux = backwardHis;
+          // // backAux.push(historico[j]);
+          // // llamar este trozo de codigo en una func
+          // // para hacer un delay
+          // backAux.push(histAux[j]);
+          // console.log("back", backAux);
+          // setBackwarHis([...backAux]);
+          // histAux[j].cuenta = null;
+          //histAux[j].signo = "";
           // histAux[j].pos = "";
           // historico[j].cuenta = null;
           // historico[j].signo = "";
@@ -150,22 +161,51 @@ export default function MorpionFrame() {
     // console.log("historico", historico);
     //
     // alert("back");
-    alert("as");
+    // alert("as");
   }
   function forward() {
-    alert("as");
+    //------codigo con un state--------------
+    let contaux = contador + 1;
+    console.log("contaux", contaux);
+    console.log("contador antes", contador);
+    setContador(contador + 1); // porque en la celda 0 vale 1,y el ultimo click lo incrementa a 1 para usar posteriorment pero con el juego terminado no se usa
+    console.log("contador despues", contador);
+    let histAux = []; // cambiar a constante
+    let filtered = historico.filter((cont) => cont.cuenta !== null); // to highlights only the elements clicked before an having the count
+    // console.log("historico", historico);
+    // console.log("filtered", filtered);
+    let filteredCuenta = filtered.map((n) => n.cuenta);
+    let cuentAux = Math.max(...filteredCuenta);
+    // console.log("cuentAux", cuentAux);
+    if (contaux <= cuentAux) {
+      //alert("vamos bien");
+      for (let j = 0; j < historico.length; j++) {
+        if (historico[j].cuenta === contaux) {
+          histAux = [...historico];
+          histAux[j] = { ...histAux[j] }; //de david , fuciona sin este codigo
+          histAux[j].back = false;
+          setHistorico(histAux);
+        }
+      }
+    } else {
+    }
+
+    // setWinner([]); // hacerlo que sea automatico
+    //------codigo con un state--------------
     // backwardHis.pop();
-    let auxH = backwardHis[backwardHis.length - 1];
-    console.log("bakwardHis.length", backwardHis);
-    console.log("auxH", auxH);
-    historico[auxH.pos].cuenta = auxH.cuenta;
-    historico[auxH.pos].signo = auxH.signo;
-    setHistorico([...historico]);
-    setBackwarHis([...auxH]);
-    // setBackwarHis([...backwardHis]);
-    setContador(contador + 1);
-    console.log("historico,afterward", historico);
+    //-------------codigo anterior
+    //   let auxH = backwardHis[backwardHis.length - 1];
+    //   console.log("bakwardHis.length", backwardHis);
+    //   console.log("auxH", auxH);
+    //   historico[auxH.pos].cuenta = auxH.cuenta;
+    //   historico[auxH.pos].signo = auxH.signo;
+    //   setHistorico([...historico]);
+    //   setBackwarHis([...auxH]);
+    //   // setBackwarHis([...backwardHis]);
+    //   setContador(contador + 1);
+    //   console.log("historico,afterward", historico);
   }
+  //--------------------codigo anterior
 
   return (
     <>
@@ -196,7 +236,8 @@ export default function MorpionFrame() {
             }
             // simbolo={clickeado === i ? signo : ""}
             simbolo={
-              clickeado === i || historico[i].cuenta !== null
+              clickeado === i ||
+              (historico[i].cuenta !== null && !historico[i].back) //back esta a false
                 ? historico[i].signo
                 : ""
             }

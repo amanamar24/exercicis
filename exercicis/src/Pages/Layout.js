@@ -20,6 +20,18 @@ export default function Layout() {
             <li>
               <Link to="/MorpionFrame">Morpion</Link>
             </li>
+            <li>
+              <Link to="/MorpionFrameReduce">MorpionWreduce</Link>
+            </li>
+            <li>
+              <Link to="/MorpionFrameRedux">MorpionWredu</Link>
+            </li>
+            <li>
+              <Link to="/Compteur">Compteur</Link>
+            </li>
+            <li>
+              <Link to="/CompteurRedux">CompteurRedux</Link>
+            </li>
           </ul>
         </nav>
         <aside className="HolyGrail-ads">...</aside>
