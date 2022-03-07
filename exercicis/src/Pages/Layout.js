@@ -32,6 +32,9 @@ export default function Layout() {
             <li>
               <Link to="/CompteurRedux">CompteurRedux</Link>
             </li>
+            <li>
+              <Link to="/TodoList">TodoList</Link>
+            </li>
           </ul>
         </nav>
         <aside className="HolyGrail-ads">...</aside>

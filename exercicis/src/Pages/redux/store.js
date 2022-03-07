@@ -1,9 +1,10 @@
 import { createStore, combineReducers } from "redux";
 import counterReducer from "./reducers/counterReducer";
+import todoReducer from "./reducers/todoReducer";
 
 const appReducer = combineReducers({
-    counterReducer: counterReducer,
+  counterReducer,
+  todoReducer,
 });
 
 export default createStore(appReducer);
-

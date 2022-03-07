@@ -14,6 +14,12 @@ const counterReducer = (state = initalState, action) => {
         ...state,
         count: state.count - action.payload,
       };
+    case "CLEAR":
+      return {
+        ...state,
+        count: 0,
+      };
+
     default:
       return state;
   }

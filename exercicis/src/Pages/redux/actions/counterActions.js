@@ -11,3 +11,9 @@ export const decreaseCounter = (amount) => {
     payload: amount,
   };
 };
+export const clear = (amount) => {
+  return {
+    type: "CLEAR",
+    payload: amount,
+  };
+};
