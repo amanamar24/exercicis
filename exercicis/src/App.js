@@ -9,6 +9,9 @@ import Home from "./Pages/Home";
 import Compteur from "./Pages/Compteur";
 import CompteurRedux from "./Pages/CompteurRedux";
 import TodoList from "./Pages/TodoList";
+import TodoListRest from "./Pages/TodoListRest";
+import ReactOcr from "./Pages/ReactOcr";
+import UserApi from "./Pages/UserApi";
 function App() {
   return (
     <>
@@ -21,6 +24,9 @@ function App() {
             <Route path="Compteur" element={<Compteur />}></Route>
             <Route path="CompteurRedux" element={<CompteurRedux />}></Route>
             <Route path="TodoList" element={<TodoList />}></Route>
+            <Route path="TodoListRest" element={<TodoListRest />}></Route>
+            <Route path="ReactOCR" element={<ReactOcr />}></Route>
+            <Route path="UserApi" element={<UserApi />}></Route>
             <Route
               path="MorpionFrameReduce"
               element={<MorpionFrameReduce />}

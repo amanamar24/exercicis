@@ -38,6 +38,7 @@ const todoReducer = (state = initalState, action) => {
 
     case "CLEAR_LIST":
       return [];
+
     default:
       return state;
   }

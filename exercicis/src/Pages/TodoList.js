@@ -86,7 +86,6 @@ export default function TodoList() {
                 title="task"
                 onChange={() => dispatch(undoTask(i))}
               />
-
               <button
                 className=" m-0.5 ml-16  bg-slate-50 W-6 h-6"
                 onClick={() => dispatch(clearTask(i))}

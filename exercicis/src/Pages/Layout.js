@@ -35,6 +35,15 @@ export default function Layout() {
             <li>
               <Link to="/TodoList">TodoList</Link>
             </li>
+            <li>
+              <Link to="/TodoListRest">TodoListRest</Link>
+            </li>
+            <li>
+              <Link to="/ReactOCR">ReactOCR</Link>
+            </li>
+            <li>
+              <Link to="/UserApi">UserApi</Link>
+            </li>
           </ul>
         </nav>
         <aside className="HolyGrail-ads">...</aside>
