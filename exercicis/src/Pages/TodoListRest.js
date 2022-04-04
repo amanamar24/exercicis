@@ -1,22 +1,57 @@
 import TodoListRestAxios from "./TodoListRestAxios";
 // import TodoListRestRQ from "./TodoListRestRQ";
-import { GetTodos, PostNewTodo } from "./TodoListRestRQ";
-import { useState } from "react";
+import {
+  GetTodos,
+  PostNewTodo,
+  useDeleteItem,
+  useUpdateItem,
+} from "./TodoListRestRQ";
+import { useState, useRef } from "react";
 export default function TodoListRest() {
   //   //   const datosAxios = TodoListRestAxios();
   //   //   const datosAxios = TodoListRestRQ();
-
+  const itemTitle = useRef([]);
+  const itemDetail = useRef([]);
+  const itemCompleted = useRef([]);
   const [title, setTask] = useState("");
   const [details, setDetail] = useState("");
+  // poner states array para hacer update en  block
+  var todoId = "";
+  var idLocalizador = "";
   const [listStatus, setListStatus] = useState("ALL");
   const { isLoading, data } = GetTodos();
   const { mutate: addTodo } = PostNewTodo();
+  const { mutate: updateTodo } = useUpdateItem();
+  const { mutate: deleteTodo } = useDeleteItem();
   const handleClick = () => {
-    // alert("df");
+    //
     // console.log("handle");
     const todo = { title, details };
     addTodo(todo);
-    console.log({ title, details });
+    console.log(todo);
+  };
+  const handleDeleteClick = () => {
+    console.log({ idLocalizador });
+    deleteTodo(idLocalizador);
+  };
+  const handleUpdateClick = () => {
+    // alert(todoId);
+    // alert(itemTitle.current[todoId].value);
+    //alert(itemDetail.current[todoId].value);
+    let completed = false;
+    console.log(itemCompleted.current[todoId]);
+    if (itemCompleted.current[todoId].checked) {
+      completed = true;
+      console.log(completed);
+    }
+    const todo = {
+      title: itemTitle.current[todoId].value,
+      details: itemDetail.current[todoId].value,
+      completed: completed,
+      id: idLocalizador,
+    };
+    updateTodo(todo);
+    // console.log({ todo });
   };
   //   const { isLoading, data } = TodoListRestAxios();
   // if (isLoading) {
@@ -77,20 +112,20 @@ export default function TodoListRest() {
         <button className="  m-0.5 bg-slate-50 h-6" onClick={handleClick}>
           addTodo
         </button>
-        <button
+        {/* <button
           className=" m-0.5 ml-16 mt-4 bg-slate-50 h-6"
           // onClick={() => dispatch(clearList())}
         >
           reset
-        </button>
-        <ul>
+        </button> */}
+        <ul className="pt-8">
           {isLoading ? (
             <h2>Loading...</h2>
           ) : (
             data.map((x, i) => (
               <li
                 className={
-                  "grid grid-cols-6 gap-4 " +
+                  " " +
                   (listStatus === "ALL"
                     ? ""
                     : listStatus === "DONE" && x.completed === true
@@ -101,24 +136,57 @@ export default function TodoListRest() {
                 }
                 key={i}
               >
-                <label> {x.title}</label>
-                <label className>DONE</label>
+                {/* <label> {x.title}</label> */}
                 <input
-                  className=""
+                  ref={(i) => itemTitle.current.push(i)}
+                  className="w-36"
+                  type="text"
+                  // onChange={(e) => setTask(e.target.value)}
+                  defaultValue={x.title}
+                />
+                <input
+                  ref={(i) => itemDetail.current.push(i)}
+                  className="w-36 ml-4"
+                  type="text"
+                  defaultValue={x.details}
+                />
+
+                <input
+                  ref={(i) => itemCompleted.current.push(i)}
+                  className="ml-4"
                   type="checkbox"
                   title="task"
+                  defaultChecked={x.completed ? "checked" : ""}
                   // onChange={() => dispatch(doneTask(i))}
                 />
-                <label className>UNDO</label>
+                <label className>DONE</label>
+                {/* <label className>UNDO</label>
                 <input
                   className=""
                   type="checkbox"
                   title="task"
                   // onChange={() => dispatch(undoTask(i))}
-                />
+                /> */}
                 <button
                   className=" m-0.5 ml-16  bg-slate-50 W-6 h-6"
-                  // onClick={() => dispatch(clearTask(i))}
+                  onClick={() => {
+                    // todoId = x.id;
+                    todoId = i;
+                    idLocalizador = x.id;
+                    handleUpdateClick();
+                  }}
+                  // onClick={handleUpdateClick(i)}
+                >
+                  update
+                </button>
+                <button
+                  className=" m-0.5 ml-16  bg-slate-50 W-6 h-6"
+                  onClick={() => {
+                    // todoId = x.id;
+                    todoId = i;
+                    idLocalizador = x.id;
+                    handleDeleteClick();
+                  }}
                 >
                   🗑
                 </button>

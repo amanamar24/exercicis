@@ -12,6 +12,34 @@ export function PostNewTodo() {
     },
   });
 }
+
+const updateTodo = (todo) => {
+  // console.log(todo.id);
+  const url = todo.id;
+  delete todo.id;
+  console.log(todo);
+  return axios.post("https://tc-todo-2022.herokuapp.com/todos/" + url, todo);
+};
+export function useUpdateItem() {
+  const queryClient = useQueryClient();
+  return useMutation(updateTodo, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("todos");
+    },
+  });
+}
+const deleteTodo = (id) => {
+  return axios.delete("https://tc-todo-2022.herokuapp.com/todos/" + id);
+};
+export function useDeleteItem() {
+  const queryClient = useQueryClient();
+  return useMutation(deleteTodo, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("todos");
+    },
+  });
+}
+
 export function GetTodos() {
   const { isLoading, data } = useQuery(
     "todos",
