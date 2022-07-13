@@ -38,6 +38,16 @@ export default function Layout() {
             <li>
               <Link to="/TodoListRest">TodoListRest</Link>
             </li>
+            {/* <li>
+              <Link to="/NevaReact">NevaReact</Link>
+            </li> */}
+            <li>
+              <Link to="/SixDMindGames">SixDMindGames</Link>
+            </li>
+            <li>
+              <Link to="/ColorPuzzle">color puzzle</Link>
+            </li>
+
             <li>
               <Link to="/ReactOCR">ReactOCR</Link>
             </li>

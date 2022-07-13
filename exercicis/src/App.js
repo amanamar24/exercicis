@@ -10,8 +10,12 @@ import Compteur from "./Pages/Compteur";
 import CompteurRedux from "./Pages/CompteurRedux";
 import TodoList from "./Pages/TodoList";
 import TodoListRest from "./Pages/TodoListRest";
+import SixDMindGames from "./Pages/SixDMindGames";
+
+import NevaReact from "./Pages/NevaReact";
 import ReactOcr from "./Pages/ReactOcr";
 import UserApi from "./Pages/UserApi";
+import ColorPuzzle from "./Pages/ColorPuzzle";
 function App() {
   return (
     <>
@@ -25,6 +29,9 @@ function App() {
             <Route path="CompteurRedux" element={<CompteurRedux />}></Route>
             <Route path="TodoList" element={<TodoList />}></Route>
             <Route path="TodoListRest" element={<TodoListRest />}></Route>
+            <Route path="NevaReact" element={<NevaReact />}></Route>
+            <Route path="SixDMindGames" element={<SixDMindGames />}></Route>
+            <Route path="ColorPuzzle" element={<ColorPuzzle />}></Route>
             <Route path="ReactOCR" element={<ReactOcr />}></Route>
             <Route path="UserApi" element={<UserApi />}></Route>
             <Route

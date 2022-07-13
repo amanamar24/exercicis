@@ -39,13 +39,17 @@ export function useDeleteItem() {
     },
   });
 }
+const GetTodosAxios = () => {
+  return axios.get("https://tc-todo-2022.herokuapp.com/todos");
+};
 
 export function GetTodos() {
   const { isLoading, data } = useQuery(
     "todos",
-    () => {
-      return axios.get("https://tc-todo-2022.herokuapp.com/todos");
-    },
+    GetTodosAxios,
+    // () => {
+    //   return axios.get("https://tc-todo-2022.herokuapp.com/todos");
+    // },
     {
       select: (data) => {
         return data.data; // data transformation
