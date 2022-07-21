@@ -9,6 +9,7 @@ export default function Eprouvette({ indice, func, dist }) {
     "bg-green-500 ",
     "bg-purple-500 ",
     "bg-violet-500 ",
+    "bg-black-500 ",
     "bg-slate-50",
   ];
 
