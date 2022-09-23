@@ -16,6 +16,7 @@ import NevaReact from "./Pages/NevaReact";
 import ReactOcr from "./Pages/ReactOcr";
 import UserApi from "./Pages/UserApi";
 import ColorPuzzle from "./Pages/ColorPuzzle";
+import VisionApi from "./Pages/VisionApi";
 function App() {
   return (
     <>
@@ -34,6 +35,7 @@ function App() {
             <Route path="ColorPuzzle" element={<ColorPuzzle />}></Route>
             <Route path="ReactOCR" element={<ReactOcr />}></Route>
             <Route path="UserApi" element={<UserApi />}></Route>
+            <Route path="VisionApi" element={<VisionApi/>}></Route>
             <Route
               path="MorpionFrameReduce"
               element={<MorpionFrameReduce />}

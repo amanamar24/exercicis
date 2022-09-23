@@ -54,6 +54,9 @@ export default function Layout() {
             <li>
               <Link to="/UserApi">UserApi</Link>
             </li>
+            <li>
+              <Link to="/VisionApi">VisionApi</Link>
+            </li>
           </ul>
         </nav>
         <aside className="HolyGrail-ads">...</aside>

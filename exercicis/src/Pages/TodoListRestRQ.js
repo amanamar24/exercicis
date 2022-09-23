@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+// add a method for one single query by id
+// create and connect my own api rest with next js
 import { useQuery, useMutation, useQueryClient } from "react-query";
 const addTodo = (todo) => {
   return axios.post("https://tc-todo-2022.herokuapp.com/todos", todo);
